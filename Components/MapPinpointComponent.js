@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MapView, StyleSheet } from 'react-native';
+import { MapView, View, StyleSheet } from 'react-native';
 import Pinpoint from './PinpointComponent.js';
 
 export default class MapPinpoint extends Component {
@@ -18,7 +18,9 @@ export default class MapPinpoint extends Component {
                     style={styles.map}
                     showsUserLocation={true}
                 />
-                <Pinpoint />
+                <View style={styles.pinpoint}>
+                    <Pinpoint />
+                </View>
             </View>
         );
     }
@@ -31,12 +33,20 @@ var styles = StyleSheet.create({
         margin: 10,
         borderWidth: 1,
         borderColor: '#000000',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    pinpoint: {
+        position: 'absolute',
+        top: 180,
+        left: 150,
     },
     map: {
-        height: 350,
-        width: 350,
-        margin: 10,
+        height: 320,
+        width: 340,
+        margin: 5,
         borderWidth: 1,
         borderColor: '#000000',
+        flex: 1,
     }
   });
