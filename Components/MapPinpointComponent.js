@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { MapView, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Pinpoint from './PinpointComponent.js';
+import MapView from 'react-native-maps';
 
 export default class MapPinpoint extends Component {
     constructor(props) {
@@ -16,11 +17,13 @@ export default class MapPinpoint extends Component {
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
-                    showsUserLocation={true}
+                    initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
                 />
-                <View style={styles.pinpoint}>
-                    <Pinpoint />
-                </View>
             </View>
         );
     }
