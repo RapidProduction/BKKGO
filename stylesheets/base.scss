@@ -1,31 +1,37 @@
 .container {
 	align-items: center;
-	margin-top: 75;
-	padding: 10;
+	margin-top: 75px;
+	padding: 10px;
 }
 
 .card {
 
 }
 
-.buttonText {
-	align-self: center;
-	color: white;
-	font-family: Helvetica-Light;
-	font-size: 15;
-}
-
 .button {
 	align-self: stretch;
+	align-items: center;
 	background-color: #48BBEC;
 	border-color: #48BBEC;
-	border-width: 1;
-	border-radius: 18;
+	border-width: 1px;
+	border-radius: 18px;
 	flex: 1;
 	flex-direction: row;
-	height: 36;
+	height: 36px;
 	justify-content: center;
-	margin-bottom: 10;
+	margin-bottom: 10px;
+
+	&-icon {
+		color: white;
+		padding-right: 5px;
+	}
+
+	&-label {
+		align-self: center;
+		color: white;
+		font-family: Helvetica-Light;
+		font-size: 15px;
+	}
 }
 
 .checkbox {
@@ -37,20 +43,26 @@
 }
 
 .icon {
-
+	color: white;
 }
 
 .input {
-	border-width: 1;
+	border-width: 1px;
 	border-color: #48BBEC;
-	border-radius: 10;
+	border-radius: 10px;
 	color: #48BBEC;
 	flex: 4;
 	font-family: HelveticaNeue;
-	font-size: 15;
-	height: 36;
-	margin-right: 5;
-	padding:10;
+	font-size: 15px;
+	height: 36px;
+	margin-right: 5px;
+	padding:10px;
+}
+
+.label {
+	color: #000000;
+	font-family: Helvetica-Light;
+	font-size: 15px;
 }
 
 .listContainer {
