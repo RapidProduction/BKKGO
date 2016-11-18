@@ -20,3 +20,7 @@ React-native-css comes with a cli and you can watch a file and compile it.
 ```sh
 $ react-native-css -i stylesheets/main.scss -o styles.js --watch
 ```
+-or-
+```sh
+$ react-native-css -i stylesheets/main.scss -o styles.js --watch --pretty
+```
