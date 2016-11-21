@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 let pinImages = {
-    to:  require('../Assets/Images/PinButton_To.png'),
-    from: require('../Assets/Images/PinButton_To.png')
+    to:  require('../Assets/Images/TO_02.png'),
+    from: require('../Assets/Images/FROM_02.png')
 }
 
 let pinSize = {
@@ -25,10 +25,10 @@ export default class Pinpoint extends Component {
     render() {
         var imageSource = pinImages.to;
         if (this.props.type == "to") {
-            imagePath = pinImages.to;
+            imageSource = pinImages.to;
         }
         else if (this.props.type == "from") {
-            imagePath = pinImages.from;
+            imageSource = pinImages.from;
         }
 
         var imageSize = pinSize.default;
