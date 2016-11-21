@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Button from 'react-native-button';
 import Pinpoint from './PinpointComponent.js';
 import MapView from 'react-native-maps';
@@ -44,13 +44,13 @@ export default class MapPinpoint extends Component {
     }
 
     render() {
-        var pinpoint = undefined;
+        var selectorPin = undefined;
         if (this.state.selectionStep == "to") {
-            pinpoint = <Pinpoint type = "to" size = "default" style={styles.pinpoint}/>
+            selectorPin = <Pinpoint type = "to" size = "default" style={styles.selectorPin}/>
         }
         else if (this.state.selectionStep == "from") {
             console.log("checkpoint");
-            pinpoint = <Pinpoint type = "from" size = "default" style={styles.pinpoint}/>
+            selectorPin = <Pinpoint type = "from" size = "default" style={styles.selectorPin}/>
         }
 
         var confirmButton = undefined;
@@ -67,20 +67,24 @@ export default class MapPinpoint extends Component {
         var fromMarker = undefined;
         if (this.state.FromLocation != undefined) {
             toMarker = <MapView.Marker 
-                style={styles.pinPoint}
                 coordinate={this.state.FromLocation}
-                title="From here"
-                image={pinImages.from}
-            />
+                title="From here">
+                <Image
+                    style={styles.pinPoint}
+                    source={pinImages.from}
+                />
+            </MapView.Marker>
         }
 
         if (this.state.ToLocation != undefined) {
             fromMarker = <MapView.Marker 
-                style={styles.pinPoint}
                 coordinate={this.state.ToLocation}
-                title="To here"
-                image={pinImages.to}
-            />
+                title="To here">
+                <Image
+                    style={styles.pinPoint}
+                    source={pinImages.to}
+                />
+            </MapView.Marker>
         }
 
         return (
@@ -90,16 +94,17 @@ export default class MapPinpoint extends Component {
                     initialRegion={{
                         latitude: 37.78825,
                         longitude: -122.4324,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
+                        latitudeDelta: 0.0400,
+                        longitudeDelta: 0.0400,
                     }}
-                    onRegionChangeComplete={this.onDragComplete.bind(this)}>
-                        {fromMarker}
-                        {toMarker}
+                    onRegionChangeComplete={this.onDragComplete.bind(this)}
+                    rotateEnabled={true}>
+                    {fromMarker}
+                    {toMarker}
                 </MapView>
 
-                <View style={styles.pinpoint}>
-                    {pinpoint}
+                <View style={styles.selectorPin}>
+                    {selectorPin}
                 </View>
 
                 <View style={styles.confirmButtonView}>
@@ -120,7 +125,7 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    pinpoint: {
+    selectorPin: {
         position: 'absolute',
         top: 180,
         left: 150,
