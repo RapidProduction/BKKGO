@@ -1,0 +1,17 @@
+.search-panel {
+	align-self: stretch;
+	background-color: #82ABDB;
+	padding: 10px;
+
+	&-label {
+		color: white;
+	}
+
+	&-button {
+		@include button(transparent, transparent);
+	}
+
+	&-big-button {
+		@include button(#48BBEC, #48BBEC);
+	}
+}

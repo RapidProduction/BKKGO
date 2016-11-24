@@ -13,11 +13,12 @@ import {
 	View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-let styles = require('../styles.js');
 
+const Main = require('./main.js');
+const styles = require('../styles.js');
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-class autocomplete extends Component {
+class AutoComplete extends Component {
 
 	constructor(props) {
 		super(props);
@@ -70,37 +71,23 @@ class autocomplete extends Component {
 		return { 'latitude': coords.latitude, 'longitude': coords.longitude };
 	}
 
-	_navigate(title, component, props) {
-		// this.props.navigator.push({
-		// 	title: '',
-		// 	component: ,
-		// 	passProps: {}
-		// });
+	_navigate(props) {
+		this.props.navigator.push({
+			title: 'BKK Go',
+			component: Main,
+			passProps: {}
+		});
 	}
 
 	search() {
-		let stations = [ // mock data for testing
-			{
-				id: 'BTS_1',
-				name: 'BTS Station 1'
-			},
-			{
-				id: 'BTS_2',
-				name: 'BTS Station 2'
-			},
-			{
-				id: 'BTS_3',
-				name: 'BTS Station 3'
-			},
-			{
-				id: 'BTS_4',
-				name: 'BTS Station 4'
-			},
-			{
-				id: 'BTS_5',
-				name: 'BTS Station 5'
-			}
-		];
+		let stations = [];
+		for (let i = 0; i < 25;) {
+			stations.push({
+				id: 'BTS_' + ++i,
+				name: 'BTS Station' + i
+			});
+		}
+
 		this.setState({
 			loading: false,
 			dataSource: ds.cloneWithRows(stations)
@@ -191,19 +178,19 @@ class autocomplete extends Component {
 	render() {
 		let spinner = this.state.loading ? (<ActivityIndicator size='large'/>) : (<View/>);
 		return (
-			<View style={styles.container}>
+			<View style={[styles.container, styles['autocomplete-panel']]}>
 				<View style={styles.row}>
 					<TextInput
 						style={styles.input}
 						value={this.state.keyword}
 						autoCapitalize='words'
 						autoFocus={true}
-						placeholder='Type to search START location ...'
+						placeholder={'Type to search ' + this.props.stateName.toUpperCase() + ' location ...'}
 						returnKeyType='search'
-						onChange={this.onTextChanged.bind(this)}/>
+						onChange={() => this.onTextChanged()}/>
 					<TouchableOpacity style={styles.button}
 						underlayColor='#99d9f4'
-						onPress={this.search.bind(this)}>
+						onPress={() => this.search()}>
 						<Icon name='search' style={styles.icon} size={15} />
 					</TouchableOpacity>
 				</View>
@@ -212,6 +199,7 @@ class autocomplete extends Component {
 					<Icon name='map-marker' style={styles['button-icon']} size={15} />
 					<Text style={styles['button-label']}>Current Location</Text>
 				</TouchableOpacity>
+				<View style={styles.row}></View>
 				<TouchableOpacity style={styles.button} underlayColor='#99d9f4'
 					onPress={() => this.useLocationFromMap()}>
 					<Icon name='map-o' style={styles['button-icon']} size={15} />
@@ -229,4 +217,4 @@ class autocomplete extends Component {
 	}
 }
 
-module.exports = autocomplete;
+module.exports = AutoComplete;

@@ -1,7 +1,5 @@
 .container {
-	align-items: center;
-	margin-top: 75px;
-	padding: 10px;
+	margin-top: 65px; // TODO: navigation bar height
 }
 
 .card {
@@ -9,17 +7,7 @@
 }
 
 .button {
-	align-self: stretch;
-	align-items: center;
-	background-color: #48BBEC;
-	border-color: #48BBEC;
-	border-width: 1px;
-	border-radius: 18px;
-	flex: 1;
-	flex-direction: row;
-	height: 36px;
-	justify-content: center;
-	margin-bottom: 10px;
+	@include button(#48BBEC, #48BBEC);
 
 	&-icon {
 		color: white;
@@ -47,8 +35,9 @@
 }
 
 .input {
+	background-color: white;
 	border-width: 1px;
-	border-color: #48BBEC;
+	border-color: #efefef;
 	border-radius: 10px;
 	color: #48BBEC;
 	flex: 4;
@@ -71,6 +60,13 @@
 
 .listItem {
 
+}
+
+.row {
+	align-items: center;
+	align-self: stretch;
+	flex-direction: row;
+	padding-bottom: 10px;
 }
 
 .sidemenu {
