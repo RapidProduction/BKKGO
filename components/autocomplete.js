@@ -13,7 +13,7 @@ import {
 	View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-let styles = require('./styles.js');
+let styles = require('../styles.js');
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
@@ -177,7 +177,7 @@ class autocomplete extends Component {
 				underlayColor='#DDDDDD'>
 				<View style={{ flexDirection: 'row', padding: 10}}>
 					<Image style={styles.thumb}
-						source={require('./assets/images/MRT_LOGO.png')} />
+						source={require('../assets/images/BTS_LOGO.png')} />
 					<View style={{ alignSelf: 'stretch' }}>
 						<Text style={styles.label}>{rowData.id}</Text>
 						<Text style={styles.label}
