@@ -80,20 +80,19 @@ class AutoComplete extends Component {
 	}
 
 	search() {
-		let stations = [];
-		for (let i = 0; i < 25;) {
-			stations.push({
-				id: 'BTS_' + ++i,
-				name: 'BTS Station' + i
-			});
-		}
+		// let stations = [];
+		// for (let i = 0; i < 25;) {
+		// 	stations.push({
+		// 		id: 'BTS_' + ++i,
+		// 		name: 'BTS Station' + i
+		// 	});
+		// }
 
-		this.setState({
-			loading: false,
-			dataSource: ds.cloneWithRows(stations)
-		});
+		// this.setState({
+		// 	loading: false,
+		// 	dataSource: ds.cloneWithRows(stations)
+		// });
 
-		/*
 		this.setState({ loading: true });
 
 		var that = this;
@@ -120,19 +119,18 @@ class AutoComplete extends Component {
 			}
 		};
 
-		var request = new Request('https://bkkgo-90783.appspot.com/getRoute', {
-			method: 'POST',
+		var request = new Request('https://bkkgo-90783.appspot.com/getAllStations', {
+			method: 'GET',
 			headers: new Headers({
 				'Content-Type': 'application/json'
-			}),
-			body: JSON.stringify(body)
+			})
 		});
 
 		fetch(request)
 			.then((response) => response.json())
 			.then((json) => {
 				if (json && json['isSuccess']) {
-					let stations = json['routes'][0]['items'][1]['stations'];
+					let stations = json['stations'];
 					that.setState({
 						loading: false,
 						dataSource: ds.cloneWithRows(stations)
@@ -151,7 +149,6 @@ class AutoComplete extends Component {
 				});
 				console.error(error);
 			});
-		*/
 	}
 
 	rowPressed(id) {
