@@ -5,8 +5,8 @@ import Pinpoint from './PinpointComponent.js';
 import MapView from 'react-native-maps';
 
 let pinImages = {
-    to:  require('../Assets/Images/TO_PIN_01.png'),
-    from: require('../Assets/Images/FROM_PIN_01.png')
+    to:  require('../assets/images/TO_PIN_01.png'),
+    from: require('../assets/images/FROM_PIN_01.png')
 }
 
 export default class MapPinpoint extends Component {

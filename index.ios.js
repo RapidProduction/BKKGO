@@ -11,21 +11,16 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import MapPinPoint from './Components/MapPinpointComponent.js';
 
 export default class BKKGo extends Component {
   render() {
     return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          title: 'BKK Go!',
-          component: require('./components/main')
-        }}>
-          <View style={styles.container}>
-            <MapPinPoint />
-          </View>
-      </NavigatorIOS>
+          <NavigatorIOS
+            style={styles.container}
+            initialRoute={{
+              title: 'BKK Go!',
+              component: require('./components/main')
+          }} />
     );
   }
 }

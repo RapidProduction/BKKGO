@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 let pinImages = {
-    to:  require('../Assets/Images/TO_02.png'),
-    from: require('../Assets/Images/FROM_02.png')
+    to:  require('../assets/images/TO_02.png'),
+    from: require('../assets/images/FROM_02.png')
 }
 
 let pinSize = {

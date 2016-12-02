@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import { View } from 'react-native';
+import MapPinPoint from './components/MapPinpointComponent.js';
 
 const SearchPanel = require('./search-panel');
 const styles = require('../styles.js');
@@ -12,6 +13,9 @@ class Main extends Component {
 			<View style={styles.container}>
 				<SearchPanel navigator={this.props.navigator}>
 				</SearchPanel>
+				<View>
+				    <MapPinPoint />
+        		</View>
 			</View>
 		);
 	}
