@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import { View } from 'react-native';
-import MapPinPoint from './components/MapPinpointComponent.js';
+import MapPinPoint from './MapPinpointComponent.js';
 
 const SearchPanel = require('./search-panel');
 const styles = require('../styles.js');
