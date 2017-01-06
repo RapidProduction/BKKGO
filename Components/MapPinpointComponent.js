@@ -43,14 +43,43 @@ export default class MapPinpoint extends Component {
         }
     }
 
+    createMarker(title, location, style, imageSrc) {
+        return <MapView.Marker 
+                coordinate={location}
+                title={title}>
+                <Image
+                    style={style}
+                    source={imageSrc}
+                />
+            </MapView.Marker>;
+    }
+
+    createSelecterPin(type, size, style) {
+        return <Pinpoint type = {type} size = {size} style={style}/>;
+    }
+
+    createDirectionLine() {
+        return <MapView.Polyline 
+                coordinates={[
+                    this.state.FromLocation,
+                    this.state.ToLocation
+                ]}
+                strokeColor={"#02f26e"}
+                strokeWidth={2}
+            />;
+    }
+
     render() {
         var selectorPin = undefined;
+        var plotline = undefined;
         if (this.state.selectionStep == "to") {
-            selectorPin = <Pinpoint type = "to" size = "default" style={styles.selectorPin}/>
+            selectorPin = this.createSelecterPin("to", "default", styles.selectorPin);
         }
         else if (this.state.selectionStep == "from") {
-            console.log("checkpoint");
-            selectorPin = <Pinpoint type = "from" size = "default" style={styles.selectorPin}/>
+            selectorPin = this.createSelecterPin("from", "default", styles.selectorPin);
+        }
+        else if (this.state.selectionStep == "plotting") {
+            plotline = this.createDirectionLine();
         }
 
         var confirmButton = undefined;
@@ -66,25 +95,11 @@ export default class MapPinpoint extends Component {
         var toMarker = undefined;
         var fromMarker = undefined;
         if (this.state.FromLocation != undefined) {
-            toMarker = <MapView.Marker 
-                coordinate={this.state.FromLocation}
-                title="From here">
-                <Image
-                    style={styles.pinPoint}
-                    source={pinImages.from}
-                />
-            </MapView.Marker>
+            fromMarker = this.createMarker("From here", this.state.FromLocation, styles.pinPoint, pinImages.from);
         }
 
         if (this.state.ToLocation != undefined) {
-            fromMarker = <MapView.Marker 
-                coordinate={this.state.ToLocation}
-                title="To here">
-                <Image
-                    style={styles.pinPoint}
-                    source={pinImages.to}
-                />
-            </MapView.Marker>
+            toMarker = this.createMarker("To here", this.state.ToLocation, styles.pinPoint, pinImages.to);
         }
 
         return (
@@ -101,6 +116,7 @@ export default class MapPinpoint extends Component {
                     rotateEnabled={true}>
                     {fromMarker}
                     {toMarker}
+                    {plotline}
                 </MapView>
 
                 <View style={styles.selectorPin}>
